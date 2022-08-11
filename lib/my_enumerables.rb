@@ -1,8 +1,9 @@
 module Enumerable
   def my_each_with_index(&block)
+    i = 0
     self.my_each do |el|
-      i = self.index(el)
       block.call(el, i)
+      i += 1
     end
   end   
 end
@@ -13,8 +14,8 @@ end
 # to this method
 class Array
   def my_each(&block)
-    for x in self
-      block.call(x)
+    for el in self
+      block.call(el)
     end
   end
 end
