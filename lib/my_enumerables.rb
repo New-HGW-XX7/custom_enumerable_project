@@ -64,6 +64,14 @@ module Enumerable
     end 
     count_arr.length
   end
+
+  def my_map(&block)
+    result_arr = []
+    self.my_each do |el|
+      result_arr << block.call(el)
+    end
+    result_arr
+  end
 end
 
 # You will first have to define my_each
