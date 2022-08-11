@@ -72,6 +72,24 @@ module Enumerable
     end
     result_arr
   end
+
+  def my_inject(acc = nil, &block)
+    if acc.nil?
+      acc = self[0]
+      self.my_each do |el|
+        next if self.index(el) == 0
+        acc = block.call(acc, el)
+      end
+
+    else
+      self.my_each do |el|
+        acc = block.call(acc, el)
+      end
+    end
+    
+    acc
+  end
+
 end
 
 # You will first have to define my_each
