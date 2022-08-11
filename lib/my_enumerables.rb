@@ -14,6 +14,18 @@ module Enumerable
     end
     return_arr
   end
+
+  def my_all?(&block)
+    result_arr = []
+    self.my_each do |el|
+      if block.call(el)
+        result_arr << true
+      else
+        result_arr << false
+      end
+    end
+    result_arr.include?(false) ? false : true
+  end
 end
 
 # You will first have to define my_each
