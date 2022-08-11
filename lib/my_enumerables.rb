@@ -50,6 +50,20 @@ module Enumerable
     end
     result_arr.include?(true) ? false : true
   end 
+
+  def my_count(&block)
+    count_arr = []
+    if block_given?
+      self.my_each do |el|
+        count_arr << el if block.call(el)
+      end
+    else
+      self.my_each do |el|
+        count_arr << el  
+      end
+    end 
+    count_arr.length
+  end
 end
 
 # You will first have to define my_each
